@@ -1,6 +1,7 @@
 // app/admin/page.tsx
 import { PrismaClient, ContactSubmission } from "@prisma/client";
-import { Mail, Calendar, User, MessageSquare, Clock } from "lucide-react";
+import { Calendar, User, MessageSquare, Clock } from "lucide-react";
+import EmailLink from "@/components/EmailLink";
 
 const prisma = new PrismaClient();
 
@@ -13,7 +14,7 @@ export default async function AdminPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#012b1d] p-4 md:p-8 pt-12 text-white font-sans">
+    <div className="min-h-screen bg-[#012b1d] px-4 pb-4 pt-24 md:px-8 md:pb-8 md:pt-28 text-white font-sans">
       <div className="mx-auto max-w-7xl">
         
         {/* Header Section */}
@@ -52,10 +53,7 @@ export default async function AdminPage() {
 
               {/* Card Body: Email */}
               <div className="mb-3">
-                 <a href={`mailto:${sub.email}`} className="flex items-center gap-2 text-sm text-[#00f7ff] hover:underline">
-                    <Mail className="h-4 w-4" />
-                    {sub.email}
-                 </a>
+                 <EmailLink email={sub.email} />
               </div>
 
               {/* Card Footer: Message */}
@@ -107,13 +105,7 @@ export default async function AdminPage() {
                     </div>
                   </td>
                   <td className="p-5 align-top">
-                    <a 
-                      href={`mailto:${sub.email}`} 
-                      className="flex items-center gap-2 text-[#00f7ff] hover:underline hover:text-white transition-colors"
-                    >
-                      <Mail className="h-4 w-4" />
-                      {sub.email}
-                    </a>
+                    <EmailLink email={sub.email} />
                   </td>
                   <td className="p-5 text-gray-300 align-top min-w-[300px]">
                     <div className="flex gap-2">

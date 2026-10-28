@@ -8,7 +8,7 @@ import FadeInSection from "./FadeInSection";
 import { galleryItems, type GalleryItem } from "./galleryItems";
 
 /** How many tiles to show before the user expands the gallery. */
-const INITIAL_COUNT = 6;
+const INITIAL_COUNT = 9;
 
 export default function Gallery() {
   const [category, setCategory] = useState("All");
